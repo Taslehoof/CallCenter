@@ -3,13 +3,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>simpleapp-jpa</artifactId>
+        <artifactId>Reclamos</artifactId>
         <groupId>org.apache.causeway.starters</groupId>
         <version>2.0.0-RC4</version>
     </parent>
 
-    <artifactId>simpleapp-jpa-webapp</artifactId>
-    <name>SimpleApp (JPA) - Webapp</name>
+    <artifactId>Reclamos-webapp</artifactId>
+    <name>Reclamos - Webapp</name>
 
     <description>
     	Assembles and runs both the Wicket viewer and the Restfulobjects viewer
@@ -237,11 +237,11 @@
                 </property>
             </activation>
             <dependencies>
-                <dependency>
+                <!--<dependency>
                     <groupId>com.microsoft.sqlserver</groupId>
                     <artifactId>mssql-jdbc</artifactId>
                     <version>7.4.1.jre8</version>
-                </dependency>
+                </dependency>-->
             </dependencies>
         </profile>
 
@@ -271,7 +271,7 @@
             </activation>
             <build>
                 <plugins>
-                    <plugin>
+                    <!--<plugin>
                         <groupId>com.google.cloud.tools</groupId>
                         <artifactId>jib-maven-plugin</artifactId>
                         <configuration>
@@ -298,7 +298,7 @@
                                 </auth>
                             </to>
                         </configuration>
-                    </plugin>
+                    </plugin>-->
                 </plugins>
             </build>
         </profile>
