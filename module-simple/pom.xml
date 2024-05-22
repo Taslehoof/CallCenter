@@ -5,8 +5,8 @@
     <modelVersion>4.0.0</modelVersion>
 
     <parent>
-        <artifactId>Reclamos</artifactId>
-        <groupId>org.apache.causeway.epas</groupId>
+        <groupId>org.apache.causeway.app</groupId>
+        <artifactId>causeway-app-starter-parent</artifactId>
         <version>2.0.0-RC4</version>
     </parent>
 
@@ -75,6 +75,16 @@
             <groupId>org.apache.isis.core</groupId>
             <artifactId>isis-core-applib</artifactId>
             <version>1.17.0</version>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+            <scope>provided</scope>
         </dependency>
 
     </dependencies>

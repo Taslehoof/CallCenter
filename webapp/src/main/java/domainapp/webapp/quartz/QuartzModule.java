@@ -9,7 +9,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 
-import lombok.val;
 
 import domainapp.webapp.quartz.job.SampleJob;
 

@@ -12,11 +12,9 @@ import org.apache.causeway.applib.services.xactn.TransactionService;
 import org.apache.causeway.core.config.environment.CausewaySystemEnvironment;
 import org.apache.causeway.testing.fixtures.applib.fixturescripts.FixtureScripts;
 
-import lombok.RequiredArgsConstructor;
 
 @Service
 @Priority(PriorityPrecedence.MIDPOINT + 10)
-@RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class SeedSecurityService {
 
     private final FixtureScripts fixtureScripts;

@@ -18,15 +18,11 @@ import org.apache.causeway.applib.services.iactnlayer.InteractionService;
 import org.apache.causeway.applib.services.user.UserMemento;
 import org.apache.causeway.applib.services.xactn.TransactionalProcessor;
 
-import lombok.RequiredArgsConstructor;
-import lombok.extern.log4j.Log4j2;
 
 import domainapp.modules.simple.dom.so.SimpleObject;
 import domainapp.modules.simple.dom.so.SimpleObjects;
 
 @Component
-@RequiredArgsConstructor(onConstructor_ = {@Inject})
-@Log4j2
 public class SampleJob implements Job {
 
     private final InteractionService interactionService;

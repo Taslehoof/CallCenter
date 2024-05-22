@@ -6,7 +6,7 @@ import javax.inject.Inject;
 import java.util.regex.Pattern;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.SimpleUsuarioMenu", repositoryFor= Usuario.class)
-@DomainServiceLayout(named ="",menuOrder="")
+@DomainServiceLayout(named = "",menuOrder = "")
 public class UsuarioMenu {
 
     @Action()
@@ -32,12 +32,21 @@ public class UsuarioMenu {
 
             @Parameter(
                     maxLength = 40,
-                    regexPattern = "",
+                    regexPattern = "(\\w+\\.)*\\w*@(\\w*\\.)*[A-Za-z]+",
                     regexPatternFlags = Pattern.CASE_INSENSITIVE,
                     regexPatternReplacement = "Debe ser una direccion de Correo Valida (que contiene '@')")
-            @ParameterLayout(named = "Direccion: ")
+            @ParameterLayout(named = "Email: ")
             final String email,
+
+            @Parameter(
+                    maxLength = 19,
+                    regexPattern = "[+]?[0-9 ]+",
+                    regexPatternReplacement =
+                            "Solo puede especificar numeros, espacios y opcionalmente el prefijo '+'." +
+                                    " Por ejemplo:, '+54 299 4484857' ")
+            @ParameterLayout(named = "Telefono: ")
             final int telefono){
+
         return usuariorepository.create(dni, nombre, apellido, direccion, email, telefono);    
     }
 

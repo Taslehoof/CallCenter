@@ -6,14 +6,16 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
         <mb3:menu>
-            <mb3:named>Simple Objects</mb3:named>
-            <mb3:section>
-                <mb3:serviceAction objectType="simple.SimpleObjects" id="create"/>
-                <mb3:serviceAction objectType="simple.SimpleObjects" id="findByName"/>
-                <mb3:serviceAction objectType="simple.SimpleObjects" id="findByNameLike"/>
-                <mb3:serviceAction objectType="simple.SimpleObjects" id="listAll"/>
-            </mb3:section>
-        </mb3:menu>
+        <mb3:named>Usuarios</mb3:named>
+        <mb3:section>
+            <mb3:serviceAction objectType="simple.SimpleUsuarioMenu" id="create">
+                <cpt:named>Nuevo Usuario y Relcmaos</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.SimpleObjects" id="findByName"/>
+            <mb3:serviceAction objectType="simple.SimpleObjects" id="findByNameLike"/>
+            <mb3:serviceAction objectType="simple.SimpleObjects" id="listAll"/>
+        </mb3:section>
+    </mb3:menu>
         <mb3:menu unreferencedActions="true">
             <mb3:named>Other</mb3:named>
         </mb3:menu>

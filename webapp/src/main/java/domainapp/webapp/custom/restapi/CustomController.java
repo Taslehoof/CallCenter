@@ -15,13 +15,11 @@ import org.apache.causeway.applib.services.iactnlayer.InteractionService;
 import org.apache.causeway.applib.services.user.UserMemento;
 import org.apache.causeway.applib.services.xactn.TransactionalProcessor;
 
-import lombok.RequiredArgsConstructor;
 
 import domainapp.modules.simple.dom.so.SimpleObject;
 import domainapp.modules.simple.dom.so.SimpleObjects;
 
 @RestController
-@RequiredArgsConstructor(onConstructor_ = {@Inject})
 class CustomController {
 
     private final InteractionService interactionService;

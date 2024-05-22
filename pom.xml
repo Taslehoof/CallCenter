@@ -29,11 +29,6 @@
     <dependencyManagement>
         <dependencies>
 
-            <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>Reclamos-application</artifactId>
-                <version>${project.version}</version>
-            </dependency>
             <!-- this project's own modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
