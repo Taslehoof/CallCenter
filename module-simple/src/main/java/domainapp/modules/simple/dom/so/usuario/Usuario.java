@@ -1,12 +1,26 @@
 package domainapp.modules.simple.dom.so.usuario;
 
-public class Usuario {
+import org.apache.isis.applib.annotation.*;
+public class Usuario implements Comparable<Usuario>{
 
+    @Property()
+    @Title
     private int dni;
+
+    @Property()
+    @Title()
     private String nombre;
+
+    @Property()
     private String apellido;
+
+    @Property()
     private String direccion;
+
+    @Property()
     private String email;
+
+    @Property()
     private int telefono;
 
     public int getDni() {
@@ -78,5 +92,10 @@ public class Usuario {
         this.direccion = direccion;
         this.email = email;
         this.telefono = telefono;
+    }
+
+    @Override
+    public int compareTo(Usuario o) {
+        return 0;
     }
 }

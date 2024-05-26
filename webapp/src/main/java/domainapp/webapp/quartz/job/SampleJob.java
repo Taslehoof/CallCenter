@@ -1,28 +1,6 @@
 package domainapp.webapp.quartz.job;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.Callable;
-
-import javax.inject.Inject;
-
-import org.quartz.Job;
-import org.quartz.JobExecutionContext;
-import org.quartz.JobExecutionException;
-
-import org.springframework.stereotype.Component;
-
-import org.apache.causeway.applib.services.iactnlayer.InteractionContext;
-import org.apache.causeway.applib.services.iactnlayer.InteractionService;
-import org.apache.causeway.applib.services.user.UserMemento;
-import org.apache.causeway.applib.services.xactn.TransactionalProcessor;
-
-
-import domainapp.modules.simple.dom.so.SimpleObject;
-import domainapp.modules.simple.dom.so.SimpleObjects;
-
-@Component
+/*@Component
 public class SampleJob implements Job {
 
     private final InteractionService interactionService;
@@ -50,4 +28,4 @@ public class SampleJob implements Job {
                 .ifFailureFail()
                 .getValue();
     }
-}
+}*/

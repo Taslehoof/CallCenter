@@ -6,19 +6,43 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <mb3:primary>
         <mb3:menu>
-        <mb3:named>Usuarios</mb3:named>
-        <mb3:section>
-            <mb3:serviceAction objectType="simple.SimpleUsuarioMenu" id="create">
-                <cpt:named>Nuevo Usuario y Relcmaos</cpt:named>
-            </mb3:serviceAction>
-            <mb3:serviceAction objectType="simple.SimpleObjects" id="findByName"/>
-            <mb3:serviceAction objectType="simple.SimpleObjects" id="findByNameLike"/>
-            <mb3:serviceAction objectType="simple.SimpleObjects" id="listAll"/>
-        </mb3:section>
-    </mb3:menu>
-        <mb3:menu unreferencedActions="true">
-            <mb3:named>Other</mb3:named>
+            <mb3:named>Usuarios</mb3:named>
+            <mb3:section>
+                <mb3:serviceAction objectType="simple.SimpleUsuarioMenu" id="create">
+                    <cpt:named>Nuevo Usuario y Reclamos</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.SimpleUsuarioMenu" id="findByDni">
+                    <cpt:named>Buscar por DNI</cpt:named>
+                </mb3:serviceAction>
+                <mb3:serviceAction objectType="simple.SimpleUsuarioMenu" id="listAll">
+                    <cpt:named>Listar Usuarios</cpt:named>
+                </mb3:serviceAction>
+            </mb3:section>
         </mb3:menu>
+        <mb3:named>Reclamos</mb3:named>
+        <mb3:section>
+            <mb3:serviceAction objectType="simple.SimpleReclamoMenu" id="create">
+                <cpt:named>Listar Reclamos</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.SimpleReclamoMenu" id="findByDni">
+                <cpt:named>Exportar Listado a PDF</cpt:named>
+            </mb3:serviceAction>
+        </mb3:section>
+
+        <mb3:named>Tecnicos</mb3:named>
+        <mb3:section>
+            <mb3:serviceAction objectType="simple.SimpleTecnicoMenu" id="create">
+                <cpt:named>Cargar Tecnico</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.SimpleTecnicoMenu" id="findByDni">
+                <cpt:named>Buscar por DNI</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.SimpleTecnicoMenu" id="listAll">
+                <cpt:named>Listar</cpt:named>
+            </mb3:serviceAction>
+        </mb3:section>
+
+
     </mb3:primary>
     <mb3:secondary>
         <mb3:menu>

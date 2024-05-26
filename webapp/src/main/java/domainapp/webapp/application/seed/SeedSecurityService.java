@@ -13,7 +13,7 @@ import org.apache.causeway.core.config.environment.CausewaySystemEnvironment;
 import org.apache.causeway.testing.fixtures.applib.fixturescripts.FixtureScripts;
 
 
-@Service
+/*@Service
 @Priority(PriorityPrecedence.MIDPOINT + 10)
 public class SeedSecurityService {
 
@@ -29,7 +29,7 @@ public class SeedSecurityService {
         }
     }
 
-    private void runScripts() {
+   private void runScripts() {
         fixtureScripts.run(new CustomRolesAndUsers());
     }
-}
+}*/

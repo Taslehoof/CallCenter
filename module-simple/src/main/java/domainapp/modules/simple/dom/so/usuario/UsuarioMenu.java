@@ -4,6 +4,7 @@ import org.apache.isis.applib.annotation.*;
 
 import javax.inject.Inject;
 import java.util.regex.Pattern;
+import java.util.List;
 
 @DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.SimpleUsuarioMenu", repositoryFor= Usuario.class)
 @DomainServiceLayout(named = "",menuOrder = "")
@@ -49,6 +50,25 @@ public class UsuarioMenu {
 
         return usuariorepository.create(dni, nombre, apellido, direccion, email, telefono);    
     }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Buscar Usuario")
+    @MemberOrder(sequence = "2")
+    public Usuario findByDni(
+            @Parameter(optionality = Optionality.MANDATORY)
+            @ParameterLayout(named = "Por dni: ")
+            final Usuario usuario){
+        return usuario;
+    }
+
+    @Action(semantics = SemanticsOf.SAFE)
+    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listado de Usuarios")
+    @MemberOrder(sequence = "3")
+    public List<Usuario> ListAll(){
+        List<Usuario> usuarios = usuariorepository.Listar();
+        return usuarios;
+    }
+
 
     @Inject
     UsuarioRepositorio usuariorepository;

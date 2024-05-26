@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so;
+package domainapp.modules.simple.dom.so.impl;
 
 import java.time.LocalTime;
 import java.time.ZoneOffset;

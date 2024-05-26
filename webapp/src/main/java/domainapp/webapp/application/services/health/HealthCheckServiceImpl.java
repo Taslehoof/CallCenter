@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
 import org.apache.causeway.applib.services.health.Health;
 import org.apache.causeway.applib.services.health.HealthCheckService;
 
-import domainapp.modules.simple.dom.so.SimpleObjects;
+import domainapp.modules.simple.dom.so.impl.SimpleObjects;
 
 @Service
 @Named("domainapp.HealthCheckServiceImpl")

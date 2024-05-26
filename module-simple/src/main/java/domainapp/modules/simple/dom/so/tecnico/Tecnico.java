@@ -1,21 +1,38 @@
 package domainapp.modules.simple.dom.so.tecnico;
 
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
+import org.apache.isis.applib.annotation.*;
 import java.util.List;
 
-public class Tecnico {
-    private String dni;
+public class Tecnico implements Comparable<Tecnico>{
+    @Property()
+    @Title()
+    private  int dni;
+
+    @Property()
+    @Title()
     private String nombre;
+
+    @Property()
     private String apellido;
+
+    @Property()
     private String direccion;
+
+    @Property()
     private int telefono;
+
+    @Property()
     private List<Cuadrilla> cuadrillaTecnico;
 
-    public String getDni() {
+    public Tecnico(int dni, String nombre, String apellido, String direccion, int telefono) {
+    }
+
+    public int getDni() {
         return dni;
     }
 
-    public void setDni(String dni) {
+    public void setDni(int dni) {
         this.dni = dni;
     }
 
@@ -61,12 +78,17 @@ public class Tecnico {
 
     public Tecnico() {}
 
-    public Tecnico(String dni, String nombre, String apellido, String direccion, int telefono, List<Cuadrilla> cuadrillaTecnico) {
+    public Tecnico(int dni, String nombre, String apellido, String direccion, int telefono, List<Cuadrilla> cuadrillaTecnico) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
         this.direccion = direccion;
         this.telefono = telefono;
         this.cuadrillaTecnico = cuadrillaTecnico;
+    }
+
+    @Override
+    public int compareTo(Tecnico o) {
+        return 0;
     }
 }

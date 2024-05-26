@@ -25,9 +25,9 @@ import org.apache.causeway.extensions.sessionlog.jpa.CausewayModuleExtSessionLog
 import org.apache.causeway.extensions.tabular.excel.CausewayModuleExtTabularExcel;
 import org.apache.causeway.persistence.jpa.eclipselink.CausewayModulePersistenceJpaEclipselink;
 import org.apache.causeway.testing.fixtures.applib.CausewayModuleTestingFixturesApplib;
-import org.apache.causeway.testing.h2console.ui.CausewayModuleTestingH2ConsoleUi;
-import org.apache.causeway.valuetypes.asciidoc.metamodel.CausewayModuleValAsciidocMetaModel;
-import org.apache.causeway.valuetypes.asciidoc.ui.wkt.CausewayModuleValAsciidocUiWkt;
+//import org.apache.causeway.testing.h2console.ui.CausewayModuleTestingH2ConsoleUi;
+//import org.apache.causeway.valuetypes.asciidoc.metamodel.CausewayModuleValAsciidocMetaModel;
+//import org.apache.causeway.valuetypes.asciidoc.ui.wkt.CausewayModuleValAsciidocUiWkt;
 import org.apache.causeway.viewer.restfulobjects.jaxrsresteasy.CausewayModuleViewerRestfulObjectsJaxrsResteasy;
 import org.apache.causeway.viewer.wicket.applib.CausewayModuleViewerWicketApplibMixins;
 import org.apache.causeway.viewer.wicket.viewer.CausewayModuleViewerWicketViewer;
@@ -35,7 +35,7 @@ import org.apache.causeway.viewer.wicket.viewer.CausewayModuleViewerWicketViewer
 import domainapp.webapp.application.ApplicationModule;
 import domainapp.webapp.application.fixture.scenarios.DomainAppDemo;
 import domainapp.webapp.custom.CustomModule;
-import domainapp.webapp.quartz.QuartzModule;
+//import domainapp.webapp.quartz.QuartzModule;
 
 @Configuration
 @Import({
@@ -51,7 +51,7 @@ import domainapp.webapp.quartz.QuartzModule;
         CausewayModuleViewerWicketViewer.class,
 
         CausewayModuleTestingFixturesApplib.class,
-        CausewayModuleTestingH2ConsoleUi.class,
+        //CausewayModuleTestingH2ConsoleUi.class,
 
         CausewayModuleExtFlywayImpl.class,
 
@@ -68,12 +68,12 @@ import domainapp.webapp.quartz.QuartzModule;
         CausewayModuleExtFullCalendarWicketUi.class,
         CausewayModuleExtPdfjsWicketUi.class,
 
-        CausewayModuleValAsciidocMetaModel.class, // for pretty rendering of DTO objects such as CommandDto, InteractionDto
-        CausewayModuleValAsciidocUiWkt.class,
+//        CausewayModuleValAsciidocMetaModel.class, // for pretty rendering of DTO objects such as CommandDto, InteractionDto
+  //      CausewayModuleValAsciidocUiWkt.class,
 
         ApplicationModule.class,
         CustomModule.class,
-        QuartzModule.class,
+        //QuartzModule.class,
 
         // discoverable fixtures
         DomainAppDemo.class

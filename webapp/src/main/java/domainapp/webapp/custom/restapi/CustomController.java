@@ -1,25 +1,6 @@
 package domainapp.webapp.custom.restapi;
 
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
-import java.util.concurrent.Callable;
-
-import javax.inject.Inject;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import org.apache.causeway.applib.services.iactnlayer.InteractionContext;
-import org.apache.causeway.applib.services.iactnlayer.InteractionService;
-import org.apache.causeway.applib.services.user.UserMemento;
-import org.apache.causeway.applib.services.xactn.TransactionalProcessor;
-
-
-import domainapp.modules.simple.dom.so.SimpleObject;
-import domainapp.modules.simple.dom.so.SimpleObjects;
-
-@RestController
+/*@RestController
 class CustomController {
 
     private final InteractionService interactionService;
@@ -42,4 +23,4 @@ class CustomController {
                 .ifFailureFail().getValue();
     }
 
-}
+}*/

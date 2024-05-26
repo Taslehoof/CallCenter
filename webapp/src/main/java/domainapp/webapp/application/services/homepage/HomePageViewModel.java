@@ -15,8 +15,8 @@ import org.apache.causeway.applib.annotation.ObjectSupport;
 import org.apache.causeway.applib.annotation.TableDecorator;
 
 import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.SimpleObject;
-import domainapp.modules.simple.dom.so.SimpleObjects;
+import domainapp.modules.simple.dom.so.impl.SimpleObject;
+import domainapp.modules.simple.dom.so.impl.SimpleObjects;
 
 @Named(SimpleModule.NAMESPACE + ".HomePageViewModel")
 @DomainObject(nature = Nature.VIEW_MODEL)

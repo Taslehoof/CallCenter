@@ -10,9 +10,9 @@ import org.springframework.scheduling.quartz.JobDetailFactoryBean;
 import org.springframework.scheduling.quartz.SimpleTriggerFactoryBean;
 
 
-import domainapp.webapp.quartz.job.SampleJob;
+//import domainapp.webapp.quartz.job.SampleJob;
 
-@Configuration
+/*@Configuration
 @ComponentScan
 public class QuartzModule {
 
@@ -38,4 +38,4 @@ public class QuartzModule {
         trigger.setRepeatCount(SimpleTrigger.REPEAT_INDEFINITELY);
         return trigger;
     }
-}
+}*/
