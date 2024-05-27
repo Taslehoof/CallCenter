@@ -13,6 +13,8 @@ public class Cuadrilla {
     private Ayudante ayudante;
     private List<Reclamo> relcamosAsignados;
 
+    public Cuadrilla(String nombre, Tecnico tecnico, Ayudante ayudante) {}
+
     public String getNombre() {
         return nombre;
     }

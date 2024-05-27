@@ -28,7 +28,18 @@
                 <cpt:named>Exportar Listado a PDF</cpt:named>
             </mb3:serviceAction>
         </mb3:section>
-
+        <mb3:named>Cuadrillas</mb3:named>
+        <mb3:section>
+            <mb3:serviceAction objectType="simple.simpleCuadrillaMenu" id="create">
+                <cpt:named>Crear Cuadrilla</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.simpleCuadrillaMenu" id="findByNombre">
+                <cpt:named>Buscar Cuadrilla</cpt:named>
+            </mb3:serviceAction>
+            <mb3:serviceAction objectType="simple.simpleCuadrillaMenu" id="listAll">
+                <cpt:named>Listar Cuadrillas</cpt:named>
+            </mb3:serviceAction>
+        </mb3:section>
         <mb3:named>Tecnicos</mb3:named>
         <mb3:section>
             <mb3:serviceAction objectType="simple.SimpleTecnicoMenu" id="create">
