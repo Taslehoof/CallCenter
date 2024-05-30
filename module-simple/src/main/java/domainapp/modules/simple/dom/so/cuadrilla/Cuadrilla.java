@@ -1,17 +1,27 @@
 package domainapp.modules.simple.dom.so.cuadrilla;
 
-import domainapp.modules.simple.dom.so.ayudannte.Ayudante;
+import domainapp.modules.simple.dom.so.ayudante.Ayudante;
 import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.tecnico.Tecnico;
 
+import org.apache.isis.applib.annotation.Property;
+
 import java.util.List;
 
-public class Cuadrilla {
+public class Cuadrilla implements Comparable<Cuadrilla>{
 
+    @Property()
     private String nombre;
+
+    @Property()
     private Tecnico tecnico;
+
+    @Property()
     private Ayudante ayudante;
-    private List<Reclamo> relcamosAsignados;
+
+    @Property()
+   private List<Reclamo> relcamosAsignados;
+
 
     public Cuadrilla(String nombre, Tecnico tecnico, Ayudante ayudante) {}
 
@@ -54,5 +64,10 @@ public class Cuadrilla {
         this.tecnico = tecnico;
         this.ayudante = ayudante;
         this.relcamosAsignados = relcamosAsignados;
+    }
+
+    @Override
+    public int compareTo(Cuadrilla o) {
+        return 0;
     }
 }
