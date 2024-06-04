@@ -1,25 +1,40 @@
 package domainapp.modules.simple.dom.so.usuario;
 
 import org.apache.isis.applib.annotation.*;
+
+import javax.jdo.annotations.*;
+
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "Usuario")
+@DatastoreIdentity(strategy = IdGeneratorStrategy.IDENTITY, column = "id")
+@Version(strategy = VersionStrategy.VERSION_NUMBER, column = "version")
+@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
+@DomainObject(editing = Editing.DISABLED)
+@DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 public class Usuario implements Comparable<Usuario>{
 
+    @Column(allowsNull = "false", length = 8)
     @Property()
     @Title
     private int dni;
 
+    @Column(allowsNull = "false", length = 40)
     @Property()
     @Title()
     private String nombre;
 
+    @Column(allowsNull = "false", length = 40)
     @Property()
     private String apellido;
 
+    @Column(allowsNull = "false", length = 40)
     @Property()
     private String direccion;
 
+    @Column(allowsNull = "false", length = 40)
     @Property()
     private String email;
 
+    @Column(allowsNull = "false", length = 19)
     @Property()
     private int telefono;
 

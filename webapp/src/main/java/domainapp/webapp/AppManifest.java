@@ -3,6 +3,8 @@ package domainapp.webapp;
 import org.apache.causeway.extensions.fullcalendar.wkt.ui.viewer.CausewayModuleExtFullCalendarWicketUi;
 import org.apache.causeway.extensions.layoutloaders.github.CausewayModuleExtLayoutLoadersGithub;
 
+import org.apache.causeway.persistence.jdo.datanucleus.CausewayModulePersistenceJdoDatanucleus;
+
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
@@ -62,7 +64,7 @@ import domainapp.webapp.custom.CustomModule;
         CausewayModuleExtCommandLogPersistenceJpa.class,
         CausewayModuleExtExecutionLogPersistenceJpa.class,
         CausewayModuleExtExecutionOutboxPersistenceJpa.class,
-
+        CausewayModulePersistenceJdoDatanucleus.class,
         CausewayModuleExtLayoutLoadersGithub.class,
         CausewayModuleExtTabularExcel.class,
         CausewayModuleExtFullCalendarWicketUi.class,

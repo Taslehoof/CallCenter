@@ -41,9 +41,17 @@
                 <version>${project.version}</version>
             </dependency>
         </dependencies>
+
     </dependencyManagement>
 
     <dependencies>
+        <dependency>
+            <groupId>org.apache.causeway.core</groupId>
+            <artifactId>causeway-core</artifactId>
+            <version>3.0.0</version>
+            <scope>import</scope>
+            <type>pom</type>
+        </dependency>
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>

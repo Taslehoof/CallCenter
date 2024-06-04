@@ -114,6 +114,11 @@
         </dependency>
 
         <dependency>
+            <groupId>org.apache.causeway.persistence</groupId>
+            <artifactId>causeway-persistence-jdo-datanucleus</artifactId>
+        </dependency>
+
+        <dependency>
             <groupId>org.apache.causeway.viewer</groupId>
             <artifactId>causeway-viewer-wicket-applib</artifactId>
         </dependency>
@@ -257,13 +262,13 @@
                     <value>POSTGRESQL</value>
                 </property>
             </activation>
-            <dependencies>
+            <!--<dependencies>
                 <dependency>
                     <groupId>org.postgresql</groupId>
 		    		<artifactId>postgresql</artifactId>
-					<!-- <version>42.2.12</version> ... version already managed -->
-                </dependency>
-            </dependencies>
+					<!- <version>42.2.12</version> ... version already managed -->
+               <!-- </dependency>
+            </dependencies> -->
         </profile>
 
         <profile>
