@@ -21,7 +21,7 @@ public class UsuarioRepositorio {
     }
 
     @Programmatic
-    public Usuario findByDni(final int dni){
+    public Usuario findByDni(final String dni){
         return respositoryService.uniqueMatch(
                 new QueryDefault<>(
                         Usuario.class,
@@ -62,7 +62,7 @@ public class UsuarioRepositorio {
             final String email,
             final int telefono) {
 
-        Usuario usuario = findByDni(dni);
+        Usuario usuario = findByDni(String.valueOf(dni));
         if (usuario ==null){
             usuario = create(dni, nombre, apellido, direccion, email, telefono);
         }

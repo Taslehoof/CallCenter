@@ -108,10 +108,10 @@
 			<artifactId>causeway-viewer-restfulobjects-jaxrsresteasy</artifactId>
 		</dependency>
 
-        <dependency>
+        <!--<dependency>
             <groupId>org.apache.causeway.persistence</groupId>
             <artifactId>causeway-persistence-jpa-eclipselink</artifactId>
-        </dependency>
+        </dependency>-->
 
         <dependency>
             <groupId>org.apache.causeway.persistence</groupId>
