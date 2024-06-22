@@ -4,7 +4,7 @@ import domainapp.modules.simple.dom.so.ayudante.Ayudante;
 import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.tecnico.Tecnico;
 
-import org.apache.isis.applib.annotation.Property;
+import org.apache.causeway.applib.annotation.Property;
 
 import java.util.List;
 

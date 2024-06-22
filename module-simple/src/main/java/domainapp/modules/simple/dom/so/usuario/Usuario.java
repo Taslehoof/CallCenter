@@ -1,5 +1,6 @@
 package domainapp.modules.simple.dom.so.usuario;
 
+import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.cuadrilla.CuadrillaRepositorio;
 import domainapp.modules.simple.dom.so.reclamo.Estado;
 import domainapp.modules.simple.dom.so.reclamo.Reclamo;
@@ -7,40 +8,66 @@ import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
 import java.time.LocalDate;
 import lombok.AccessLevel;
 import lombok.Getter;
-import org.apache.isis.applib.services.factory.FactoryService;
-import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.util.ObjectContracts;
 import lombok.Setter;
-import org.apache.isis.applib.annotation.*;
+import lombok.ToString;
+
+import org.apache.causeway.applib.services.factory.FactoryService;
+import org.apache.causeway.applib.services.repository.RepositoryService;
+import org.apache.causeway.applib.util.ObjectContracts;
+import org.apache.causeway.applib.annotation.*;
 import javax.inject.Inject;
+import lombok.val;
+import domainapp.modules.simple.types.Name;
+
+import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
+
+import javax.inject.Named;
 import javax.jdo.annotations.*;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.Table;
+import javax.persistence.UniqueConstraint;
+
 import java.util.ArrayList;
 import java.util.List;
 
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "Usuario")
-@DatastoreIdentity(strategy = IdGeneratorStrategy.IDENTITY, column = "id")
-@Version(strategy = VersionStrategy.VERSION_NUMBER, column = "version")
-@Queries({
-        @Query(
-                name = "find", language = "JDOQL",
-                value = "SELECT "
+@Entity
+@Table(
+    schema = SimpleModule.SCHEMA_reclamos,
+    uniqueConstraints = {
+        @UniqueConstraint(name = "Usuario_dni_UNQ", columnNames = {"dni"})
+    }
+)
+@NamedQueries({
+        @NamedQuery(
+                name = Usuario.FIND,
+                query = "SELECT "
                 + "FROM domainapp.modules.simple.dom.so.usuario.Usuario"
                 + "ORDER BY nombre ASC"),
-        @Query(
-                name = "findByNroReclamo", language = "JDOQL",
-                value = "SELECT "
+        @NamedQuery(
+                name = Usuario.FIND_BY_NRO_RECLAMO,
+                query = "SELECT "
                 + "FROM domainapp.modules.simple.dom.so.usuario.Usuario"
                 + "WHERE dni == :dni"
                 + "ORDER BY dni ASC")
 })
-@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
-@DomainObject(editing = Editing.DISABLED)
+@EntityListeners(CausewayEntityListener.class)
+@Named(SimpleModule.NAMESPACE_reclamos+".Usuario")
+@DomainObject(entityChangePublishing = Publishing.ENABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
-@Getter @Setter
+@ToString(onlyExplicitlyIncluded = true)
 public class Usuario implements Comparable<Usuario>{
+
+    static final String FIND = " Usuario.find";
+    static final String FIND_BY_NRO_RECLAMO = " Usuario.findByNroReclamo";
 
     @Column(allowsNull = "false", length = 8)
     @Property()
+    @Id
     @Title()
     private int dni;
 
@@ -69,10 +96,12 @@ public class Usuario implements Comparable<Usuario>{
     @Collection()
     private List<Reclamo> reclamos = new ArrayList<Reclamo>();
 
-    @Override
-    public String toString() {
-        return ObjectContracts.toString(this,"dni");
+    public static Usuario withName(final String nombre) {
+        val usuario = new Usuario();
+        usuario.setNombre(nombre);
+        return usuario;
     }
+
 
     public int RepoDni(){return this.dni;}
     public String RepoNombre(){return this.nombre;}
@@ -101,10 +130,18 @@ public class Usuario implements Comparable<Usuario>{
         this.reclamos = reclamos;
     }
 
+    public int default0Update(){return getDni();}
+    public String default1Update(){return getNombre();}
+    public String default2Update(){return getApellido();}
+    public String default3Update(){return getDireccion();}
+    public String default4Update(){return getEmail();}
+    public int default5Update(){return getTelefono();}
+
     @Action()
     @ActionLayout(named = "Cargar reclamo")
     public Usuario addReclamo(@ParameterLayout(named = "Tipo de Reclamo") final TipoReclamo tipoReclamo){
-        final Reclamo reclamo = factoryService.instantiate(Reclamo.class);
+        //final Reclamo reclamo = factoryService.instantiate(Reclamo.class);
+        final Reclamo reclamo = factoryService.create(Reclamo.class);
         reclamo.setUsuario(this);
         reclamo.setDireccion(this.direccion);
         reclamo.setFecha(LocalDate.now());
@@ -118,6 +155,11 @@ public class Usuario implements Comparable<Usuario>{
     @Override
     public int compareTo(final Usuario other) {
         return ObjectContracts.compare(this, other, "dni");
+    }
+
+    @Override
+    public String toString() {
+        return ObjectContracts.toString(this,"dni");
     }
 
     @Inject @NotPersistent
@@ -134,5 +176,5 @@ public class Usuario implements Comparable<Usuario>{
 
     @Inject @NotPersistent
     @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
-    UsuarioRepositorio usuarioRepository;
+    Usuarios usuarioRepository;
 }

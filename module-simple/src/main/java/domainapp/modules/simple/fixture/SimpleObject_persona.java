@@ -22,8 +22,8 @@ import lombok.SneakyThrows;
 import lombok.val;
 import lombok.experimental.Accessors;
 
-import domainapp.modules.simple.dom.so.impl.SimpleObject;
-import domainapp.modules.simple.dom.so.impl.SimpleObjects;
+import domainapp.modules.simple.dom.so.SimpleObject;
+import domainapp.modules.simple.dom.so.SimpleObjects;
 
 @RequiredArgsConstructor
 public enum SimpleObject_persona

@@ -1,8 +1,8 @@
 package domainapp.modules.simple.dom.so.ayudante;
 
-import org.apache.isis.applib.annotation.Programmatic;
-import org.apache.isis.applib.services.repository.RepositoryService;
-import org.apache.isis.applib.query.QueryDefault;
+import org.apache.causeway.applib.annotation.Programmatic;
+import org.apache.causeway.applib.services.repository.RepositoryService;
+//import org.apache.causeway.applib.query.QueryDefault;
 
 import javax.inject.Inject;
 import java.util.List;
@@ -12,21 +12,23 @@ public class AyudanteRepositorio {
     @Programmatic
     public List<Ayudante> Listar(){
 
-        return repositoryService.allMatches(
+        /*return repositoryService.allMatches(
                 new QueryDefault<>(
                         Ayudante.class,
-                        "find"));
+                        "find"));*/
+        return null;
 
     }
 
     @Programmatic
     public Ayudante findByDni(final int dni){
 
-        return repositoryService.uniqueMatch(
+        /*return repositoryService.uniqueMatch(
                 new QueryDefault<>(
                         Ayudante.class,
                         "findByDni",
-                        "dni",dni));
+                        "dni",dni));*/
+        return null;
 
     }
 

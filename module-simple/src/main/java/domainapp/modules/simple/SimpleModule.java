@@ -14,7 +14,7 @@ import org.apache.causeway.testing.fixtures.applib.fixturescripts.FixtureScript;
 import org.apache.causeway.testing.fixtures.applib.modules.ModuleWithFixtures;
 import org.apache.causeway.testing.fixtures.applib.teardown.jpa.TeardownFixtureJpaAbstract;
 
-import domainapp.modules.simple.dom.so.impl.SimpleObject;
+import domainapp.modules.simple.dom.so.SimpleObject;
 
 @Configuration
 @Import({
@@ -30,6 +30,8 @@ public class SimpleModule implements ModuleWithFixtures {
 
     public static final String NAMESPACE = "simple";
     public static final String SCHEMA = "simple";
+    public static final String NAMESPACE_reclamos = "reclamos";
+    public static final String SCHEMA_reclamos = "reclamos";
 
     @Override
     public FixtureScript getTeardownFixture() {

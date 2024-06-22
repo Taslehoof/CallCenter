@@ -1,7 +1,7 @@
 package domainapp.modules.simple.dom.so.tecnico;
 
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
-import org.apache.isis.applib.annotation.*;
+import org.apache.causeway.applib.annotation.*;
 import java.util.List;
 
 public class Tecnico implements Comparable<Tecnico>{

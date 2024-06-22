@@ -1,30 +1,32 @@
 package domainapp.modules.simple.dom.so.cuadrilla;
 
 import domainapp.modules.simple.dom.so.ayudante.Ayudante;
-
 import domainapp.modules.simple.dom.so.tecnico.Tecnico;
 
-import org.apache.isis.applib.annotation.NatureOfService;
-import org.apache.isis.applib.annotation.DomainService;
-import org.apache.isis.applib.annotation.Programmatic;
-import org.apache.isis.applib.query.QueryDefault;
-import org.apache.isis.applib.services.repository.RepositoryService;
+import org.apache.causeway.applib.annotation.NatureOfService;
+import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.Programmatic;
+//import org.apache.causeway.applib.query.QueryDefault;
+import org.apache.causeway.applib.services.repository.RepositoryService;
 
 import javax.inject.Inject;
 
 import java.util.List;
 
-@DomainService( nature = NatureOfService.DOMAIN, repositoryFor = Cuadrilla.class)
+//@DomainService( nature = NatureOfService.DOMAIN, repositoryFor = Cuadrilla.class)
+@DomainService()
 public class CuadrillaRepositorio {
 
     @Programmatic
     public List<Cuadrilla> Listar(){
-        return repositoryService.allMatches(new QueryDefault<>(Cuadrilla.class,"find"));
+        //return repositoryService.allMatches(new QueryDefault<>(Cuadrilla.class,"find"));
+        return null;
     }
 
     @Programmatic
     public List<Cuadrilla> Listar(Cuadrilla nombre){
-        return repositoryService.allMatches(new QueryDefault<>(Cuadrilla.class,"findByCuadrilla","nombre",nombre));
+        //return repositoryService.allMatches(new QueryDefault<>(Cuadrilla.class,"findByCuadrilla","nombre",nombre));
+        return null;
     }
 
     @Programmatic
@@ -44,11 +46,12 @@ public class CuadrillaRepositorio {
     }
 
     private Cuadrilla findByNombre(String nombre) {
-        return repositoryService.uniqueMatch(
+        /*return repositoryService.uniqueMatch(
                 new QueryDefault<>(
                         Cuadrilla.class,
                         "findByNombre",
-                        "nombre", nombre));
+                        "nombre", nombre));*/
+        return null;
     }
 
     @Inject

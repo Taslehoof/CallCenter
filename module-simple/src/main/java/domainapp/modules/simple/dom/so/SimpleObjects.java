@@ -1,4 +1,4 @@
-package domainapp.modules.simple.dom.so.impl;
+package domainapp.modules.simple.dom.so;
 
 import java.util.List;
 
@@ -7,7 +7,6 @@ import javax.inject.Inject;
 import javax.inject.Named;
 import javax.persistence.TypedQuery;
 
-import domainapp.modules.simple.dom.so.impl.SimpleObject;
 import domainapp.modules.simple.dom.so.impl.SimpleObjectRepository;
 
 import org.apache.causeway.applib.annotation.Action;

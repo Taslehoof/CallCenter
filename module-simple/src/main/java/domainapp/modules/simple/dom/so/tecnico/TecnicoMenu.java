@@ -1,17 +1,19 @@
 package domainapp.modules.simple.dom.so.tecnico;
 
-import org.apache.isis.applib.annotation.*;
+import org.apache.causeway.applib.annotation.*;
 
 import javax.inject.Inject;
 import java.util.List;
 
-@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.SimpleTecnicoMenu", repositoryFor= Tecnico.class)
-@DomainServiceLayout(named = "",menuOrder = "")
+//@DomainService(nature = NatureOfService.VIEW_MENU_ONLY, objectType="simple.SimpleTecnicoMenu", repositoryFor= Tecnico.class)
+@DomainService()
+//@DomainServiceLayout(named = "",menuOrder = "")
+@DomainServiceLayout(named = "")
 public class TecnicoMenu {
 
     @Action()
     @ActionLayout(named = "Cargar Tecnico")
-    @MemberOrder(sequence = "1")
+    //@MemberOrder(sequence = "1")
     public Tecnico create(
 
             @Parameter(maxLength = 8)
@@ -38,8 +40,9 @@ public class TecnicoMenu {
     }
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Buscar Tecnico")
-    @MemberOrder(sequence = "2")
+    //@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Buscar Tecnico")
+    @ActionLayout(named = "Buscar Tecnico")
+    //@MemberOrder(sequence = "2")
     public Tecnico findByDni(
             @Parameter(optionality = Optionality.MANDATORY)
             @ParameterLayout(named = "por dni: ")
@@ -48,8 +51,9 @@ public class TecnicoMenu {
     }
 
     @Action(semantics = SemanticsOf.SAFE)
-    @ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listado de Tecnicos")
-    @MemberOrder(sequence = "3")
+    //@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listado de Tecnicos")
+    @ActionLayout(named = "Listado de Tecnicos")
+    //@MemberOrder(sequence = "3")
     public List<Tecnico> ListAll(){
         List<Tecnico> tecnicos = tecnicorepository.Listar();
         return tecnicos;
