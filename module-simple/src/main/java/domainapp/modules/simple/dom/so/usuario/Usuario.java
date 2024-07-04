@@ -65,35 +65,40 @@ public class Usuario implements Comparable<Usuario>{
     static final String FIND = " Usuario.find";
     static final String FIND_BY_NRO_RECLAMO = " Usuario.findByNroReclamo";
 
-    @Column(allowsNull = "false", length = 8)
-    @Property()
     @Id
-    @Title()
+    @Column(allowsNull = "false", length = 8)
+    @Getter @Setter
+    @ToString.Include
     private int dni;
 
     @Column(allowsNull = "false", length = 40)
-    @Property()
     @Title()
+    @Getter @Setter
     private String nombre;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
+    @Getter @Setter
     private String apellido;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
+    @Getter @Setter
     private String direccion;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
+    @Getter @Setter
     private String email;
 
     @Column(allowsNull = "false", length = 19)
     @Property()
+    @Getter @Setter
     private int telefono;
 
     @Persistent(mappedBy = "usuario", dependentElement = "true")
     @Collection()
+    @Getter @Setter
     private List<Reclamo> reclamos = new ArrayList<Reclamo>();
 
     public static Usuario withName(final String nombre) {
@@ -157,11 +162,6 @@ public class Usuario implements Comparable<Usuario>{
         return ObjectContracts.compare(this, other, "dni");
     }
 
-    @Override
-    public String toString() {
-        return ObjectContracts.toString(this,"dni");
-    }
-
     @Inject @NotPersistent
     @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     FactoryService factoryService;
@@ -170,11 +170,4 @@ public class Usuario implements Comparable<Usuario>{
     @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
     RepositoryService repositoryService;
 
-    @Inject @NotPersistent
-    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
-    CuadrillaRepositorio cuadrillaRepository;
-
-    @Inject @NotPersistent
-    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
-    Usuarios usuarioRepository;
 }

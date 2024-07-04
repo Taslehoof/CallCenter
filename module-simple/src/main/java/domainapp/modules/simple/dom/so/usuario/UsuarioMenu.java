@@ -12,7 +12,7 @@ import java.util.List;
 @DomainServiceLayout(named = "")
 public class UsuarioMenu {
 
-    @Action()
+    /*@Action()
     @ActionLayout(named = "Cargar Usuario")
     //@MemberOrder(sequence = "1")
     public Usuario create( 
@@ -51,9 +51,9 @@ public class UsuarioMenu {
             final int telefono){
 
         return usuariorepository.create(dni, nombre, apellido, direccion, email, telefono);    
-    }
+    }*/
 
-    @Action(semantics = SemanticsOf.SAFE)
+    /*@Action(semantics = SemanticsOf.SAFE)
     //@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Buscar Usuario")
     @ActionLayout(named = "Buscar Usuario")
     //@MemberOrder(sequence = "2")
@@ -62,18 +62,18 @@ public class UsuarioMenu {
             @ParameterLayout(named = "Por dni: ")
             final Usuario usuario){
         return usuario;
-    }
+    }*/
 
-    @Action(semantics = SemanticsOf.SAFE)
+    /*@Action(semantics = SemanticsOf.SAFE)
     //@ActionLayout(bookmarking = BookmarkPolicy.AS_ROOT, named = "Listado de Usuarios")
     @ActionLayout(named = "Listado de Usuarios")
     //@MemberOrder(sequence = "3")
     public List<Usuario> ListAll(){
         List<Usuario> usuarios = usuariorepository.Listar();
         return usuarios;
-    }
+    }*/
 
 
-    @Inject
-    Usuarios usuariorepository;
+//    @Inject
+    //Usuarios usuariorepository;
 }

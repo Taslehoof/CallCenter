@@ -12,6 +12,8 @@ import lombok.RequiredArgsConstructor;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.DomainService;
+import org.apache.causeway.applib.annotation.Parameter;
+import org.apache.causeway.applib.annotation.ParameterLayout;
 import org.apache.causeway.applib.annotation.PriorityPrecedence;
 import org.apache.causeway.applib.annotation.PromptStyle;
 import org.apache.causeway.applib.annotation.SemanticsOf;
@@ -20,6 +22,7 @@ import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.annotation.NatureOfService;
 
 import java.util.List;
+import java.util.regex.Pattern;
 
 @Named(SimpleModule.NAMESPACE+"Usuarios")
 @DomainService(nature = NatureOfService.VIEW)
@@ -51,7 +54,40 @@ public class Usuarios{
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public Usuario create(
-            @Name final String nombre) {
+            @Parameter(maxLength = 8)
+            @ParameterLayout(named = "DNI:")
+            final int dni,
+
+            @Parameter(maxLength = 40)
+            @Name
+            @ParameterLayout(named = "Nombre: ")
+            final String nombre,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Apellido: ")
+            final String apellido,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Direccion: ")
+            final String direccion,
+
+            @Parameter(
+                    maxLength = 40,
+                    regexPattern = "(\\w+\\.)*\\w*@(\\w*\\.)*[A-Za-z]+",
+                    regexPatternFlags = Pattern.CASE_INSENSITIVE,
+                    regexPatternReplacement = "Debe ser una direccion de Correo Valida (que contiene '@')")
+            @ParameterLayout(named = "Email: ")
+            final String email,
+
+            @Parameter(
+                    maxLength = 19,
+                    regexPattern = "[+]?[0-9 ]+",
+                    regexPatternReplacement =
+                            "Solo puede especificar numeros, espacios y opcionalmente el prefijo '+'." +
+                                    " Por ejemplo:, '+54 299 4484857' ")
+            @ParameterLayout(named = "Telefono: ")
+            final int telefono){
+            //int dni, @Name final String nombre, String apellido, String direccion, String email, int telefono) {
 
         return respositoryService.persist(Usuario.withName(nombre));
     }
