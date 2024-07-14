@@ -4,22 +4,34 @@ import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
 import domainapp.modules.simple.dom.so.usuario.Usuario;
 
+import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NonNull;
 import lombok.Setter;
 import lombok.ToString;
 
+import org.apache.causeway.applib.annotation.Action;
+import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
+import org.apache.causeway.applib.annotation.Optionality;
+import org.apache.causeway.applib.annotation.Parameter;
+import org.apache.causeway.applib.annotation.ParameterLayout;
+import org.apache.causeway.applib.annotation.Programmatic;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.PropertyLayout;
 import org.apache.causeway.applib.annotation.Publishing;
+import org.apache.causeway.applib.annotation.SemanticsOf;
 import org.apache.causeway.applib.annotation.Title;
+import org.apache.causeway.applib.services.message.MessageService;
 import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
+import org.apache.isis.applib.services.repository.RepositoryService;
+
+import javax.inject.Inject;
 import javax.inject.Named;
 import javax.jdo.annotations.*;
 import javax.persistence.Entity;
@@ -57,8 +69,6 @@ import java.time.LocalDate;
 })
 @EntityListeners(CausewayEntityListener.class)
 @Named(SimpleModule.NAMESPACE_reclamos+".Reclamo")
-//@DatastoreIdentity(strategy = IdGeneratorStrategy.IDENTITY,column = "id")
-//@Version(strategy = VersionStrategy.VERSION_NUMBER, column = "version")
 @DomainObject(entityChangePublishing = Publishing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
@@ -115,9 +125,26 @@ public class Reclamo implements Comparable<Reclamo>{
     @Getter @Setter
     private Cuadrilla cuadrillaAsigna;
 
-    public Reclamo() {}
+    public Reclamo(){}
 
-    public Reclamo(String nroReclamo, Usuario usuario, String direccion, LocalDate fecha, TipoReclamo tipoReclamo, String descripcion, Estado estado, Cuadrilla cuadrillaAsigna) {
+    public Reclamo(Usuario usuario, String direccion, LocalDate fecha, TipoReclamo tipoReclamo,Estado estado) {
+        this.estado = estado;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.tipoReclamo = tipoReclamo;
+    }
+
+    public Reclamo(String nroReclamo, Usuario usuario, String direccion, LocalDate fecha, TipoReclamo tipoReclamo, Estado estado) {
+        this.nroReclamo = nroReclamo;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.tipoReclamo = tipoReclamo;
+        this.estado = estado;
+    }
+
+    public Reclamo(String nroReclamo, Usuario usuario, String direccion, LocalDate fecha, TipoReclamo tipoReclamo, String descripcion, Estado estado) {
         this.nroReclamo = nroReclamo;
         this.usuario = usuario;
         this.direccion = direccion;
@@ -125,11 +152,62 @@ public class Reclamo implements Comparable<Reclamo>{
         this.tipoReclamo = tipoReclamo;
         this.descripcion = descripcion;
         this.estado = estado;
-        this.cuadrillaAsigna = cuadrillaAsigna;
+    }
+
+    @Programmatic
+    public void CambiarEstado(Estado estado){
+        this.estado = estado;
+    }
+
+    @Action(semantics = SemanticsOf.IDEMPOTENT_ARE_YOU_SURE)
+    @ActionLayout(named = "Asignar Cuadrilla")
+    public Reclamo AsignarCuadrilla(
+            @Parameter(optionality = Optionality.MANDATORY)
+            @ParameterLayout(named = "Cuadrilla")
+            final Cuadrilla cuadrilla){
+        /*if (getEstado().equals(Estado.Anulado)){
+           messageService.warnUser("No se puede asignar un reclamo Anulado!");
+        } else if (getEstado().equals(Estado.Cerrado)) {
+           messageService.warnUser("No se puede asignar un reclamo Cerrado!");
+        }  else if (getEstado().equals(Estado.En_Proceso)) {
+            messageService.warnUser("El reclamo ya posee una cuadrilla asignada!");
+        } else {
+            this.cuadrillaAsigna = cuadrilla;
+            CambiarEstado(Estado.En_Proceso);
+            messageService.warnUser("Reclamo Asignado");
+        }*/
+
+        switch (estado){
+            case Anulado:
+                messageService.warnUser("No se puede asignar un reclamo Anulado!");
+                break;
+            case Cerrado:
+                messageService.warnUser("No se puede asignar un reclamo Cerrado!");
+                break;
+            case En_Proceso:
+                messageService.warnUser("El reclamo ya posee una cuadrilla asignada!");
+                break;
+            case Asignado:
+                messageService.warnUser("Reclamo Asignado");
+                break;
+            default:
+                CambiarEstado(Estado.Sin_Asignar);
+                messageService.warnUser("El reclamo no fue asignado todavia");
+        }
+
+        return this;
     }
 
     @Override
     public int compareTo(final Reclamo other){
         return ObjectContracts.compare(this, other, nroReclamo);
     }
+
+    @Inject @NotPersistent
+    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
+    RepositoryService repositoryService;
+
+    @Inject @NotPersistent
+    @Getter(AccessLevel.NONE) @Setter(AccessLevel.NONE)
+    MessageService messageService;
 }

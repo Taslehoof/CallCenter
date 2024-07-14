@@ -8,4 +8,6 @@ public interface ReclaRepo  extends JpaRepository<Reclamo, Long> {
 
     List<Reclamo> Listar(final String reclamo);
 
+    Estado CambiarEstado(Estado estado);
+
 }
