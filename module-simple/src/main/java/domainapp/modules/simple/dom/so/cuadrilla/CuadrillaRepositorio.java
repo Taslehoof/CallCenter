@@ -29,7 +29,7 @@ public class CuadrillaRepositorio {
         return null;
     }
 
-    @Programmatic
+    /*@Programmatic
     public Cuadrilla create(final String nombre, final Tecnico tecnico, final Ayudante ayudante) {
         final Cuadrilla cuadrilla = new Cuadrilla(nombre, tecnico, ayudante);
         repositoryService.persist(cuadrilla);
@@ -46,14 +46,14 @@ public class CuadrillaRepositorio {
     }
 
     private Cuadrilla findByNombre(String nombre) {
-        /*return repositoryService.uniqueMatch(
+        return repositoryService.uniqueMatch(
                 new QueryDefault<>(
                         Cuadrilla.class,
                         "findByNombre",
-                        "nombre", nombre));*/
+                        "nombre", nombre));
         return null;
     }
 
     @Inject
-    RepositoryService repositoryService;
+    RepositoryService repositoryService;*/
 }

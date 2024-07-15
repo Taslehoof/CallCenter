@@ -13,6 +13,7 @@ import lombok.ToString;
 import org.apache.causeway.applib.annotation.Action;
 import org.apache.causeway.applib.annotation.ActionLayout;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
+import org.apache.causeway.applib.annotation.Collection;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
@@ -44,6 +45,7 @@ import javax.persistence.UniqueConstraint;
 import javax.xml.validation.Schema;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 
 @Entity
 @Table(
@@ -124,6 +126,10 @@ public class Reclamo implements Comparable<Reclamo>{
     @PropertyLayout(named = "Cuadrilla")
     @Getter @Setter
     private Cuadrilla cuadrillaAsigna;
+
+    @Persistent(mappedBy = "reclamoAsignado", dependentElement = "true")
+    @Collection()
+    private List<PlanillaCuadrilla> planillas = new ArrayList<PlanillaCuadrilla>();
 
     public Reclamo(){}
 

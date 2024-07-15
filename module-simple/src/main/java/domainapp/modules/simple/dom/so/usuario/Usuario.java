@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.so.usuario;
 
 import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.cuadrilla.CuadrillaRepositorio;
 import domainapp.modules.simple.dom.so.reclamo.Estado;
 import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.reclamo.TipoReclamo;
