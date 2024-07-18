@@ -17,23 +17,23 @@ import javax.inject.Named;
 
 import java.util.List;
 
-@Named(SimpleModule.NAMESPACE_reclamos+"Reclamos")
+@Named(SimpleModule.NAMESPACE_reclamos+".Reclamos")
 @DomainService(nature = NatureOfService.VIEW)
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Reclamos {
 
-    final ReclaRepo ReclaRepoRepository;
+    final ReclaRepo ReclaRepo;
     final RepositoryService repositoryService;
 
-    public Estado ReclaEstado(Estado estado) {
-        return ReclaRepoRepository.CambiarEstado(estado);
+    public Estado CambiarEstado(Estado estado) {
+        return ReclaRepo.CambiarEstado(estado);
     }
 
 
     @Programmatic
     public List<Reclamo> Listar(){
-        return ReclaRepoRepository.findAll();
+        return ReclaRepo.findAll();
     }
 
 

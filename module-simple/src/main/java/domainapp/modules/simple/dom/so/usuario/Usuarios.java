@@ -30,16 +30,16 @@ import java.util.regex.Pattern;
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Usuarios{
 
-    final UserRepo UserRepoRepository;
+    final UserRepo UserRepo;
     final RepositoryService respositoryService;
 
     @Action(semantics = SemanticsOf.SAFE)
     public List<Usuario> Listar(){
-        return UserRepoRepository.findAll();
+        return UserRepo.findAll();
     }
 
     public Usuario findByDniExact(int dni){
-        return UserRepoRepository.findByDni(dni);
+        return UserRepo.findByDni(dni);
     }
 
 
@@ -47,7 +47,7 @@ public class Usuarios{
     @ActionLayout(promptStyle = PromptStyle.DIALOG_SIDEBAR)
     public List<Usuario> findByNombre(
             @Name final String nombre){
-        return UserRepoRepository.findByNombreContains(nombre);
+        return UserRepo.findByNombreContains(nombre);
     }
 
 

@@ -5,6 +5,8 @@ import domainapp.modules.simple.dom.so.ayudante.Ayudante;
 import domainapp.modules.simple.dom.so.reclamo.Reclamo;
 import domainapp.modules.simple.dom.so.tecnico.Tecnico;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import lombok.val;
 
@@ -65,6 +67,7 @@ import java.util.List;
 @DomainObject(entityChangePublishing = Publishing.ENABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
+@Getter @Setter
 public class Cuadrilla implements Comparable<Cuadrilla>{
 
     static final String FIND = " Cuadrilla.find";
@@ -72,12 +75,15 @@ public class Cuadrilla implements Comparable<Cuadrilla>{
     static final String FIND_BY_TECNICO = " Cuadrilla.findByTecnico";
     static final String FIND_BY_AYUDANTE = " Cuadrilla.findByAyudante";
 
+    @Column(allowsNull = "false", length = 40)
     @Property()
     private String nombre;
 
+    @Column(allowsNull = "false")
     @Property()
     private Tecnico tecnico;
 
+    @Column(allowsNull = "false")
     @Property()
     private Ayudante ayudante;
 
@@ -85,41 +91,6 @@ public class Cuadrilla implements Comparable<Cuadrilla>{
     @Persistent(mappedBy = "CuadrillaAsignada", defaultFetchGroup = "true")
     @Column(allowsNull = "true")
     private List<Reclamo> relcamosAsignados;
-
-
-    public Cuadrilla(String nombre, Tecnico tecnico, Ayudante ayudante) {}
-
-    public String getNombre() {
-        return nombre;
-    }
-
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
-
-    public Tecnico getTecnico() {
-        return tecnico;
-    }
-
-    public void setTecnico(Tecnico tecnico) {
-        this.tecnico = tecnico;
-    }
-
-    public Ayudante getAyudante() {
-        return ayudante;
-    }
-
-    public void setAyudante(Ayudante ayudante) {
-        this.ayudante = ayudante;
-    }
-
-    public List<Reclamo> getRelcamosAsignados() {
-        return relcamosAsignados;
-    }
-
-    public void setRelcamosAsignados(List<Reclamo> relcamosAsignados) {
-        this.relcamosAsignados = relcamosAsignados;
-    }
 
     public Cuadrilla() {}
 
@@ -131,12 +102,21 @@ public class Cuadrilla implements Comparable<Cuadrilla>{
     }
 
     public static Cuadrilla create(final String nombre, final Tecnico tecnico, final Ayudante ayudante){
-        val cuadrilla= new Cuadrilla();
+        Cuadrilla cuadrilla= new Cuadrilla();
         cuadrilla.setNombre(nombre);
         cuadrilla.setTecnico(tecnico);
         cuadrilla.setAyudante(ayudante);
         return cuadrilla;
     }
+
+    public static Cuadrilla update(final String nombre, final Tecnico tecnico, final Ayudante ayudante){
+        Cuadrilla cuadrilla= new Cuadrilla();
+        cuadrilla.setNombre(nombre);
+        cuadrilla.setTecnico(tecnico);
+        cuadrilla.setAyudante(ayudante);
+        return cuadrilla;
+    }
+
 
     @Override
     public int compareTo(final Cuadrilla other) {

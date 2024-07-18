@@ -10,9 +10,13 @@ public interface CuadrillaRepo extends JpaRepository<Cuadrilla,Long> {
 
     Cuadrilla cuadrilla(final String nombre);
 
-    Cuadrillas create (final String nombre, final Tecnico tecnico, final Ayudante ayudante);
+    Cuadrillas create(final String nombre, final Tecnico tecnico, final Ayudante ayudante);
+
+    Cuadrillas update(final String nombre, final Tecnico tecnico, final Ayudante ayudante);
 
     Cuadrilla findByNombre(final Cuadrilla nombre);
 
     List<Cuadrilla> findAll(final String tecnico);
+
+
 }

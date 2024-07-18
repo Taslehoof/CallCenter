@@ -2,6 +2,7 @@ package domainapp.modules.simple.dom.so.reclamo;
 
 import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
+import domainapp.modules.simple.dom.so.planilaCuadrilla.PlanillaCuadrilla;
 import domainapp.modules.simple.dom.so.usuario.Usuario;
 
 import lombok.AccessLevel;
@@ -46,6 +47,7 @@ import javax.xml.validation.Schema;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Table(
@@ -158,6 +160,17 @@ public class Reclamo implements Comparable<Reclamo>{
         this.tipoReclamo = tipoReclamo;
         this.descripcion = descripcion;
         this.estado = estado;
+    }
+
+    public Reclamo(String nroReclamo, Usuario usuario, String direccion, LocalDate fecha, TipoReclamo tipoReclamo, String descripcion, Estado estado,List<PlanillaCuadrilla> planillas) {
+        this.nroReclamo = nroReclamo;
+        this.usuario = usuario;
+        this.direccion = direccion;
+        this.fecha = fecha;
+        this.tipoReclamo = tipoReclamo;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.planillas = planillas;
     }
 
     @Programmatic
