@@ -68,7 +68,7 @@ import domainapp.modules.simple.types.Notes;
 
 @Entity
 @Table(
-    schema= SimpleModule.SCHEMA,
+    schema= SimpleModule.SCHEMA_reclamos,
     uniqueConstraints = {
         @UniqueConstraint(name = "SimpleObject__name__UNQ", columnNames = {"name"})
     }
@@ -82,7 +82,7 @@ import domainapp.modules.simple.types.Notes;
         )
 })
 @EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE + ".SimpleObject")
+@Named(SimpleModule.NAMESPACE_reclamos + ".SimpleObject")
 @DomainObject(entityChangePublishing = Publishing.ENABLED)
 @DomainObjectLayout(
         tableDecorator = TableDecorator.DatatablesNet.class,

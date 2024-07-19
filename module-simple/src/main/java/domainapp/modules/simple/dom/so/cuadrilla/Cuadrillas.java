@@ -36,8 +36,8 @@ public class Cuadrillas {
     final RepositoryService repositoryService;
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)
-    @ActionLayout(named = "Crear Cuadrilla")
-    public Cuadrilla create(
+    @ActionLayout(named = "Crear Cuadrilla y Actualizar")
+    public Cuadrilla createUpdate(
 
             @Parameter(maxLength = 40)
             @ParameterLayout(named = "Nombre")
@@ -51,7 +51,11 @@ public class Cuadrillas {
             @ParameterLayout(named = "Ayudante")
             final Ayudante ayudante){
 
-        return repositoryService.persist(Cuadrilla.create(nombre,tecnico,ayudante));
+        if (cuadrillaRepo.create() == true) {
+            return repositoryService.persist(Cuadrilla.create(nombre, tecnico, ayudante));
+        } else {
+            return Cuadrilla.update(nombre,tecnico,ayudante);
+        }
     }
 
     @Action(semantics = SemanticsOf.NON_IDEMPOTENT)

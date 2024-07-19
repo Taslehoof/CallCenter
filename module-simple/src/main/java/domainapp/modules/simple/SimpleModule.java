@@ -28,8 +28,8 @@ import domainapp.modules.simple.dom.so.SimpleObject;
 @EntityScan(basePackageClasses = {SimpleModule.class})
 public class SimpleModule implements ModuleWithFixtures {
 
-    public static final String NAMESPACE = "simple";
-    public static final String SCHEMA = "simple";
+    //public static final String NAMESPACE = "simple";
+    //public static final String SCHEMA = "simple";
     public static final String NAMESPACE_reclamos = "reclamos";
     public static final String SCHEMA_reclamos = "reclamos";
 

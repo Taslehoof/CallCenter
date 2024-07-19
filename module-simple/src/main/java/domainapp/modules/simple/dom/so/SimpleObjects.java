@@ -25,7 +25,7 @@ import lombok.RequiredArgsConstructor;
 import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.types.Name;
 
-@Named(SimpleModule.NAMESPACE + ".SimpleObjects")
+@Named(SimpleModule.NAMESPACE_reclamos + ".SimpleObjects")
 @DomainService(nature = NatureOfService.VIEW)
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject} )
