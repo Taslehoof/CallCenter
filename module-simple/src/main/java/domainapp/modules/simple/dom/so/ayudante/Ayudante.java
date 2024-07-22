@@ -11,6 +11,7 @@ import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Publishing;
+import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import javax.inject.Named;
@@ -34,18 +35,18 @@ import java.util.List;
         @NamedQuery(
                 name = Ayudante.FIND,
                 query = "SELECT "
-                + "FROM domainapp.modules.simple.dom.ayudante.Ayudante "
+                + "FROM domainapp.modules.simple.dom.so.ayudante.Ayudante "
                 + "ORDER BY nombre ASC"),
         @NamedQuery(
                 name = Ayudante.FIND_BY_DNI,
                 query = "SELECT "
-                + "FROM domainapp.modules.simple.dom.ayudante.Ayudante "
+                + "FROM domainapp.modules.simple.dom.so.ayudante.Ayudante "
                 + "WHERE dni == :dni "
                 + "ORDER BY dni ASC")
 
 })
 @EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE_reclamos+".Ayudante")
+//@Named(SimpleModule.NAMESPACE_reclamos+".Ayudante")
 @DomainObject(entityChangePublishing = Publishing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
@@ -55,7 +56,7 @@ public class Ayudante  implements Comparable<Ayudante>{
     static final String FIND = " Ayudante.find";
     static final String FIND_BY_DNI = "Ayudante.findByDni";
 
-    private String dni;
+    private int dni;
     private String nombre;
     private String apellido;
     private String direccion;
@@ -63,20 +64,36 @@ public class Ayudante  implements Comparable<Ayudante>{
     private List<Cuadrilla> cuadrillaAyudante;
 
     public Ayudante(int dni, String nombre, String apellido, String direccion, int telefono) {
+        this.dni = dni;
+        this.nombre = nombre;
+        this.apellido = apellido;
+        this.direccion = direccion;
+        this.telefono = telefono;
     }
 
-
-    public List<Cuadrilla> getCuadrillaAyudante() {
-        return cuadrillaAyudante;
+    public static Ayudante create(final int dni, final String nombre, final String apellido, final String direccion, final int telefono){
+        Ayudante ayudante = new Ayudante();
+       ayudante.setDni(dni);
+       ayudante.setNombre(nombre);
+       ayudante.setApellido(apellido);
+       ayudante.setDireccion(direccion);
+       ayudante.setTelefono(telefono);
+       return ayudante;
     }
 
-    public void setCuadrillaAyudante(List<Cuadrilla> cuadrillaAyudante) {
-        this.cuadrillaAyudante = cuadrillaAyudante;
+    public static Ayudante update(final int dni, final String nombre, final String apellido, final String direccion, final int telefono){
+        Ayudante ayudante = new Ayudante();
+        ayudante.setDni(dni);
+        ayudante.setNombre(nombre);
+        ayudante.setApellido(apellido);
+        ayudante.setDireccion(direccion);
+        ayudante.setTelefono(telefono);
+        return ayudante;
     }
 
     public Ayudante() {}
 
-    public Ayudante(String dni, String nombre, String apellido, String direccion, int telefono, List<Cuadrilla> cuadrillaAyudante) {
+    public Ayudante(int dni, String nombre, String apellido, String direccion, int telefono, List<Cuadrilla> cuadrillaAyudante) {
         this.dni = dni;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -86,7 +103,7 @@ public class Ayudante  implements Comparable<Ayudante>{
     }
 
     @Override
-    public int compareTo(Ayudante o) {
-        return 0;
+    public int compareTo(final Ayudante other) {
+        return ObjectContracts.compare(this, other,"dni");
     }
 }

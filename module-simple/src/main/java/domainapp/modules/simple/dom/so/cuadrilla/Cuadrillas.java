@@ -78,7 +78,7 @@ public class Cuadrillas {
     }
 
    @Action(semantics = SemanticsOf.SAFE)
-   public List<Cuadrilla> findAll(){
+   public List<Cuadrilla> Listar(){
        return cuadrillaRepo.findAll();
    }
 
