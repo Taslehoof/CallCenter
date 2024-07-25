@@ -56,7 +56,8 @@ import java.util.List;
 })
 @EntityListeners(CausewayEntityListener.class)
 @Named(SimpleModule.NAMESPACE_reclamos+".Usuario")
-@DomainObject(entityChangePublishing = Publishing.ENABLED)
+@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 public class Usuario implements Comparable<Usuario>{

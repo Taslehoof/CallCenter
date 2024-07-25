@@ -76,6 +76,33 @@ public class Ayudantes {
         return ayudanteRepo.findByDni(dni);
     }
 
+    @Action()
+    @ActionLayout(named = "Editar")
+    public Ayudante update(
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "DNI: ")
+            final int dni,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Nombre: ")
+            final String nombre,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Apellido: ")
+            final String apellido,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Direccion: ")
+            final String direccion,
+
+            @Parameter(maxLength = 40)
+            @ParameterLayout(named = "Telefono: ")
+            final int telefono){
+
+        return repositoryService.persist(Ayudante.update(dni,nombre,apellido,direccion,telefono));
+    }
+
 
 
 }

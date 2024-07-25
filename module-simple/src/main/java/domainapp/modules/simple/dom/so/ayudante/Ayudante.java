@@ -10,11 +10,14 @@ import lombok.ToString;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import javax.inject.Named;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
@@ -47,7 +50,8 @@ import java.util.List;
 })
 @EntityListeners(CausewayEntityListener.class)
 //@Named(SimpleModule.NAMESPACE_reclamos+".Ayudante")
-@DomainObject(entityChangePublishing = Publishing.DISABLED)
+@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter

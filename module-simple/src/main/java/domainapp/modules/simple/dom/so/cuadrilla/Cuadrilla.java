@@ -13,6 +13,7 @@ import lombok.val;
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
+import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.util.ObjectContracts;
@@ -20,6 +21,8 @@ import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityList
 
 import javax.inject.Named;
 import javax.jdo.annotations.Column;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
@@ -64,7 +67,8 @@ import java.util.List;
 
 })
 @EntityListeners(CausewayEntityListener.class)
-@DomainObject(entityChangePublishing = Publishing.ENABLED)
+@DomainObject(editing = Editing.DISABLED)
+@PersistenceCapable(identityType = IdentityType.DATASTORE)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter

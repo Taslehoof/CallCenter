@@ -1,9 +1,30 @@
 package domainapp.modules.simple.dom.so.tecnico;
 
+import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
+
+import lombok.ToString;
+
 import org.apache.causeway.applib.annotation.*;
+import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
+
+import javax.inject.Named;
+import javax.jdo.annotations.IdentityType;
+import javax.jdo.annotations.PersistenceCapable;
+import javax.persistence.Entity;
+import javax.persistence.EntityListeners;
+import javax.persistence.Table;
+
 import java.util.List;
 
+@Entity
+@Table()
+@EntityListeners(CausewayEntityListener.class)
+@Named(SimpleModule.NAMESPACE_reclamos+".Tecnico")
+@DomainObject(entityChangePublishing = Publishing.DISABLED)
+@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@DomainObjectLayout(bookmarking =  BookmarkPolicy.AS_ROOT)
+@ToString(onlyExplicitlyIncluded = true)
 public class Tecnico implements Comparable<Tecnico>{
     @Property()
     @Title()
