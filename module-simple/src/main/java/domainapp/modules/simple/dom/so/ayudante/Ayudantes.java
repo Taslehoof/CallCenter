@@ -75,7 +75,6 @@ public class Ayudantes {
             final int dni){
         return ayudanteRepo.findByDni(dni);
     }
-
     @Action()
     @ActionLayout(named = "Editar")
     public Ayudante update(
