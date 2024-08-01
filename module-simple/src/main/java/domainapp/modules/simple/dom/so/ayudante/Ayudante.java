@@ -11,13 +11,17 @@ import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
+import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.Publishing;
+import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import javax.inject.Named;
+import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
+import javax.jdo.annotations.Persistent;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
@@ -60,11 +64,31 @@ public class Ayudante  implements Comparable<Ayudante>{
     static final String FIND = " Ayudante.find";
     static final String FIND_BY_DNI = "Ayudante.findByDni";
 
+    @Column(allowsNull = "false", length = 40)
+    @Property()
+    @Title()
     private int dni;
+
+    @Column(allowsNull = "false", length = 40)
+    @Property()
+    @Title()
     private String nombre;
+
+    @Column(allowsNull = "false", length = 40)
+    @Property()
     private String apellido;
+
+    @Column(allowsNull = "false", length = 40)
+    @Property()
     private String direccion;
+
+    @Column(allowsNull = "false", length = 40)
+    @Property()
     private int telefono;
+
+    @Column(allowsNull = "false", length = 40)
+    @Persistent(mappedBy = "ayudante", defaultFetchGroup = "true")
+    @Property()
     private List<Cuadrilla> cuadrillaAyudante;
 
     public Ayudante(int dni, String nombre, String apellido, String direccion, int telefono) {
@@ -76,7 +100,7 @@ public class Ayudante  implements Comparable<Ayudante>{
     }
 
     public static Ayudante create(final int dni, final String nombre, final String apellido, final String direccion, final int telefono){
-        Ayudante ayudante = new Ayudante();
+       Ayudante ayudante = new Ayudante();
        ayudante.setDni(dni);
        ayudante.setNombre(nombre);
        ayudante.setApellido(apellido);
