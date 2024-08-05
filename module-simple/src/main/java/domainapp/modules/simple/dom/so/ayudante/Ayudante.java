@@ -61,7 +61,7 @@ import java.util.List;
 @Getter @Setter
 public class Ayudante  implements Comparable<Ayudante>{
 
-    static final String FIND = " Ayudante.find";
+    static final String FIND = "Ayudante.find";
     static final String FIND_BY_DNI = "Ayudante.findByDni";
 
     @Column(allowsNull = "false", length = 40)

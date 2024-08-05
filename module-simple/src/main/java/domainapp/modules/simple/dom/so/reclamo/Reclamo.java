@@ -2,7 +2,7 @@ package domainapp.modules.simple.dom.so.reclamo;
 
 import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
-import domainapp.modules.simple.dom.so.planilaCuadrilla.PlanillaCuadrilla;
+import domainapp.modules.simple.dom.so.planillaCuadrilla.PlanillaCuadrilla;
 import domainapp.modules.simple.dom.so.usuario.Usuario;
 
 import lombok.AccessLevel;
@@ -43,7 +43,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
-import javax.xml.validation.Schema;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
