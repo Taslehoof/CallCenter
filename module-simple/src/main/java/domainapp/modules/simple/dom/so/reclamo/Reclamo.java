@@ -72,6 +72,7 @@ import java.util.List;
 })
 @EntityListeners(CausewayEntityListener.class)
 @Named(SimpleModule.NAMESPACE_reclamos+".Reclamo")
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "Reclamo")
 @DomainObject(entityChangePublishing = Publishing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
