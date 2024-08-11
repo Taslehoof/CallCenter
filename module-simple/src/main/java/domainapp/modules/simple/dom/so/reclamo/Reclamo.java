@@ -48,13 +48,6 @@ import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(
-        schema = SimpleModule.SCHEMA,
-        uniqueConstraints = {
-                @UniqueConstraint(name="Reclamo_nroReclamo_UNQ", columnNames = {"nroReclamo"} )
-        }
-)
 @NamedQueries({
         @NamedQuery(
                 name = Reclamo.FIND,
@@ -70,12 +63,11 @@ import java.util.List;
                         + "WHERE nroReclamo == :nroReclamo "
                         + "ORDER BY nroReclamo ASC")
 })
-@EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE+".Reclamo")
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "Reclamo")
-@DomainObject(entityChangePublishing = Publishing.DISABLED)
+@Unique(name="Reclamo_nroReclamo_UNQ", members = {"nroReclamo"})
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
+@Getter @Setter
 public class Reclamo implements Comparable<Reclamo>{
 
     static final String FIND = "Reclamo.find";
@@ -85,48 +77,40 @@ public class Reclamo implements Comparable<Reclamo>{
     @Column(allowsNull = "true", length = 10)
     @Property(editing = Editing.DISABLED)
     @Id
-    @Getter @Setter
     private String nroReclamo;
 
     @Column(allowsNull = "false")
     @NonNull
     @Property()
-    @Getter @Setter
     private Usuario usuario;
 
     @Column(allowsNull = "true")
     @NonNull
     @Property()
-    @Getter @Setter
     private String direccion;
 
     @Column(allowsNull = "false")
     @NonNull
     @PropertyLayout(named = "Fecha de Creacion del Reclamo: ")
-    @Getter @Setter
     @Property(editing = Editing.DISABLED)
     private LocalDate fecha = LocalDate.now();
 
     @Column(allowsNull = "true")
     @Title(prepend = "Reclamo: ")
     @Property(editing = Editing.ENABLED)
-    @Getter @Setter
     private TipoReclamo tipoReclamo;
 
     @Column(allowsNull = "true", length = 2000)
     @Property(editing = Editing.ENABLED)
-    @Getter @Setter
     private String descripcion;
 
     @Column(allowsNull = "true", length = 2000)
     @Property(editing = Editing.DISABLED)
-    @Getter @Setter
     private Estado estado;
 
     @Column(allowsNull = "true",name = "cuadrilla_asig_id")
     @Property()
     @PropertyLayout(named = "Cuadrilla")
-    @Getter @Setter
     private Cuadrilla cuadrillaAsigna;
 
     @Persistent(mappedBy = "reclamoAsignado", dependentElement = "true")

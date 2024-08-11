@@ -31,13 +31,6 @@ import javax.persistence.UniqueConstraint;
 import java.util.ArrayList;
 import java.util.List;
 
-@Entity
-@Table(
-    schema = SimpleModule.SCHEMA,
-    uniqueConstraints = {
-        @UniqueConstraint(name = "Usuario_dni_UNQ", columnNames = {"dni"})
-    }
-)
 @NamedQueries({
         @NamedQuery(
                 name = Usuario.FIND,
@@ -51,11 +44,12 @@ import java.util.List;
                 + "WHERE dni == :dni"
                 + "ORDER BY dni ASC")
 })
-@EntityListeners(CausewayEntityListener.class)
-@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@Unique(name = "Usuario_dni_UNQ", members = {"dni"})
+@PersistenceCapable(identityType = IdentityType.DATASTORE,schema = SimpleModule.SCHEMA)
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
+@Getter @Setter
 public class Usuario implements Comparable<Usuario>{
 
     static final String FIND = " Usuario.find";
@@ -63,38 +57,30 @@ public class Usuario implements Comparable<Usuario>{
 
     @Id
     @Column(allowsNull = "false", length = 8)
-    @Getter @Setter
-    @ToString.Include
     private int dni;
 
     @Column(allowsNull = "false", length = 40)
     @Title()
-    @Getter @Setter
     private String nombre;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
-    @Getter @Setter
     private String apellido;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
-    @Getter @Setter
     private String direccion;
 
     @Column(allowsNull = "false", length = 40)
     @Property()
-    @Getter @Setter
     private String email;
 
     @Column(allowsNull = "false", length = 19)
     @Property()
-    @Getter @Setter
     private int telefono;
 
     @Persistent(mappedBy = "usuario", dependentElement = "true")
     @Collection()
-    @Getter @Setter
     private List<Reclamo> reclamos = new ArrayList<Reclamo>();
 
     public static Usuario withName(final String nombre) {

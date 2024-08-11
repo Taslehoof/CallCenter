@@ -23,6 +23,7 @@ import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Unique;
 import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -31,13 +32,7 @@ import javax.persistence.UniqueConstraint;
 
 import java.math.BigInteger;
 
-@Entity
-@Table(
-        schema = SimpleModule.SCHEMA,
-        uniqueConstraints = {
-                @UniqueConstraint(name = "PlanillaCuadrilla_idPlanillaCuadrilla_UNQ", columnNames = {"idPlanillaCuadrilla"})
-        }
-)
+@Unique(name = "PlanillaCuadrilla_idPlanillaCuadrilla_UNQ", members = {"idPlanillaCuadrilla"})
 @NamedQueries({
         @NamedQuery(
                 name = PlanillaCuadrilla.FIND,
@@ -48,7 +43,7 @@ import java.math.BigInteger;
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @DatastoreIdentity(strategy = IdGeneratorStrategy.IDENTITY, column = "id")
-@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "PlanillaCuadrilla")
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
 public class PlanillaCuadrilla implements Comparable<PlanillaCuadrilla>{

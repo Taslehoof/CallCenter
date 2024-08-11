@@ -24,6 +24,7 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Unique;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
@@ -33,13 +34,6 @@ import javax.persistence.UniqueConstraint;
 
 import java.util.List;
 
-@Entity
-@Table(
-        schema = SimpleModule.SCHEMA,
-        uniqueConstraints = {
-                @UniqueConstraint(name = "Cuadrilla_nombre_UNQ", columnNames = {"nombre"})
-        }
-)
 @NamedQueries({
         @NamedQuery(
                 name = Cuadrilla.FIND,
@@ -65,9 +59,9 @@ import java.util.List;
                         + "ORDER BY nombre ASC"),
 
 })
-@EntityListeners(CausewayEntityListener.class)
+@Unique(name = "Cuadrilla_nombre_UNQ", members = {"nombre"})
 @DomainObject(editing = Editing.DISABLED)
-@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter

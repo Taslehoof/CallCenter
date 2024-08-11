@@ -20,6 +20,7 @@ import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
+import javax.jdo.annotations.Unique;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
@@ -29,13 +30,6 @@ import javax.persistence.UniqueConstraint;
 
 import java.util.List;
 
-@Entity
-@Table(
-        schema = SimpleModule.SCHEMA,
-        uniqueConstraints = {
-                @UniqueConstraint(name = "Ayudante_dni_UNQ", columnNames = {"dni"})
-        }
-)
 @NamedQueries({
         @NamedQuery(
                 name = Ayudante.FIND,
@@ -49,8 +43,8 @@ import java.util.List;
                 + "WHERE dni == :dni "
                 + "ORDER BY dni ASC")
 })
-@EntityListeners(CausewayEntityListener.class)
-@PersistenceCapable(identityType = IdentityType.DATASTORE)
+@Unique(name = "Ayudante_dni_UNQ", members = {"dni"})
+@PersistenceCapable(identityType = IdentityType.DATASTORE, schema = SimpleModule.SCHEMA)
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
