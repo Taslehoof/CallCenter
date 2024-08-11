@@ -18,7 +18,7 @@ import domainapp.modules.simple.SimpleModule;
 import domainapp.modules.simple.dom.so.SimpleObject;
 import domainapp.modules.simple.dom.so.SimpleObjects;
 
-@Named(SimpleModule.NAMESPACE_reclamos + ".HomePageViewModel")
+@Named(SimpleModule.NAMESPACE + ".HomePageViewModel")
 @DomainObject(nature = Nature.VIEW_MODEL)
 @HomePage
 @DomainObjectLayout()

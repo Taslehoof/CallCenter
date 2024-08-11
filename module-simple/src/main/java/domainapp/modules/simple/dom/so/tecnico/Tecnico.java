@@ -30,7 +30,7 @@ import java.util.List;
 @Entity
 @Table()
 @EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE_reclamos+".Tecnico")
+//@Named(SimpleModule.NAMESPACE_reclamos+".Tecnico")
 @DomainObject(entityChangePublishing = Publishing.DISABLED)
 @PersistenceCapable(identityType = IdentityType.DATASTORE)
 @DomainObjectLayout(bookmarking =  BookmarkPolicy.AS_ROOT)

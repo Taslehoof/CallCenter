@@ -36,7 +36,7 @@ import java.util.List;
 
 @Entity
 @Table(
-    schema = SimpleModule.SCHEMA_reclamos,
+    schema = SimpleModule.SCHEMA,
     uniqueConstraints = {
         @UniqueConstraint(name = "Usuario_dni_UNQ", columnNames = {"dni"})
     }
@@ -55,7 +55,7 @@ import java.util.List;
                 + "ORDER BY dni ASC")
 })
 @EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE_reclamos+".Usuario")
+@Named(SimpleModule.NAMESPACE+".Usuario")
 @PersistenceCapable(identityType = IdentityType.DATASTORE)
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)

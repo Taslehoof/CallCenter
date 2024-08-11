@@ -12,12 +12,10 @@ import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Property;
-import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
-import javax.inject.Named;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
@@ -33,7 +31,7 @@ import java.util.List;
 
 @Entity
 @Table(
-        schema = SimpleModule.SCHEMA_reclamos,
+        //schema = SimpleModule.SCHEMA_reclamos,
         uniqueConstraints = {
                 @UniqueConstraint(name = "Ayudante_dni_UNQ", columnNames = {"dni"})
         }
@@ -50,16 +48,14 @@ import java.util.List;
                 + "FROM domainapp.modules.simple.dom.so.ayudante.Ayudante "
                 + "WHERE dni == :dni "
                 + "ORDER BY dni ASC")
-
 })
 @EntityListeners(CausewayEntityListener.class)
-//@Named(SimpleModule.NAMESPACE_reclamos+".Ayudante")
 @PersistenceCapable(identityType = IdentityType.DATASTORE)
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)
 @ToString(onlyExplicitlyIncluded = true)
 @Getter @Setter
-public class Ayudante  implements Comparable<Ayudante>{
+public class Ayudante implements Comparable<Ayudante>{
 
     static final String FIND = "Ayudante.find";
     static final String FIND_BY_DNI = "Ayudante.findByDni";

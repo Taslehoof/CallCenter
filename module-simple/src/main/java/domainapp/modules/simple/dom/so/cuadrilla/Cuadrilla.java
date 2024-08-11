@@ -34,9 +34,9 @@ import javax.persistence.UniqueConstraint;
 import java.util.List;
 
 @Entity
-@Named(SimpleModule.NAMESPACE_reclamos+".Cuadrilla")
+//@Named(SimpleModule.NAMESPACE_reclamos+".Cuadrilla")
 @Table(
-        schema = SimpleModule.SCHEMA_reclamos,
+        //schema = SimpleModule.SCHEMA_reclamos,
         uniqueConstraints = {
                 @UniqueConstraint(name = "Cuadrilla_nombre_UNQ", columnNames = {"nombre"})
         }

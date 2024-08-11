@@ -24,7 +24,7 @@ import org.apache.causeway.applib.annotation.NatureOfService;
 import java.util.List;
 import java.util.regex.Pattern;
 
-@Named(SimpleModule.NAMESPACE_reclamos+"Usuarios")
+@Named(SimpleModule.NAMESPACE+"Usuarios")
 @DomainService(nature = NatureOfService.VIEW)
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
