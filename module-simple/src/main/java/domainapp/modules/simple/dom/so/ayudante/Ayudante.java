@@ -31,7 +31,7 @@ import java.util.List;
 
 @Entity
 @Table(
-        //schema = SimpleModule.SCHEMA_reclamos,
+        schema = SimpleModule.SCHEMA,
         uniqueConstraints = {
                 @UniqueConstraint(name = "Ayudante_dni_UNQ", columnNames = {"dni"})
         }

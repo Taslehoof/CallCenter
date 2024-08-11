@@ -19,7 +19,7 @@ import javax.inject.Named;
 
 import java.util.List;
 
-//@Named(SimpleModule.NAMESPACE_reclamos + ".Tecnico")
+@Named(SimpleModule.NAMESPACE + ".Tecnico")
 @DomainService(nature = NatureOfService.VIEW)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})
 public class Tecnicos {

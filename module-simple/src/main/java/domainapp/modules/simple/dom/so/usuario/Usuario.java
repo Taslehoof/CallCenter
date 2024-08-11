@@ -16,15 +16,12 @@ import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.applib.annotation.*;
 import javax.inject.Inject;
 import lombok.val;
-import domainapp.modules.simple.types.Name;
 
 import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
-
 import javax.inject.Named;
 import javax.jdo.annotations.*;
 import javax.persistence.Entity;
 import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
@@ -55,7 +52,6 @@ import java.util.List;
                 + "ORDER BY dni ASC")
 })
 @EntityListeners(CausewayEntityListener.class)
-@Named(SimpleModule.NAMESPACE+".Usuario")
 @PersistenceCapable(identityType = IdentityType.DATASTORE)
 @DomainObject(editing = Editing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)

@@ -50,7 +50,7 @@ import java.util.List;
 
 @Entity
 @Table(
-        //schema = SimpleModule.SCHEMA_reclamos,
+        schema = SimpleModule.SCHEMA,
         uniqueConstraints = {
                 @UniqueConstraint(name="Reclamo_nroReclamo_UNQ", columnNames = {"nroReclamo"} )
         }
@@ -71,7 +71,7 @@ import java.util.List;
                         + "ORDER BY nroReclamo ASC")
 })
 @EntityListeners(CausewayEntityListener.class)
-//@Named(SimpleModule.NAMESPACE_reclamos+".Reclamo")
+@Named(SimpleModule.NAMESPACE+".Reclamo")
 @PersistenceCapable(identityType = IdentityType.DATASTORE, schema = "simple", table = "Reclamo")
 @DomainObject(entityChangePublishing = Publishing.DISABLED)
 @DomainObjectLayout(bookmarking = BookmarkPolicy.AS_ROOT)

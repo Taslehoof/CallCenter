@@ -26,7 +26,7 @@ import javax.inject.Named;
 
 import java.util.List;
 
-//@Named(SimpleModule.NAMESPACE_reclamos+".Cuadrillas")
+@Named(SimpleModule.NAMESPACE+".Cuadrillas")
 @DomainService(nature = NatureOfService.VIEW)
 @Priority(PriorityPrecedence.EARLY)
 @RequiredArgsConstructor(onConstructor_ = {@Inject})

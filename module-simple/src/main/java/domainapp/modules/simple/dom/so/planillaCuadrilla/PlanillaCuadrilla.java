@@ -33,7 +33,7 @@ import java.math.BigInteger;
 
 @Entity
 @Table(
-        ////schema = SimpleModule.SCHEMA_reclamos,
+        schema = SimpleModule.SCHEMA,
         uniqueConstraints = {
                 @UniqueConstraint(name = "PlanillaCuadrilla_idPlanillaCuadrilla_UNQ", columnNames = {"idPlanillaCuadrilla"})
         }
