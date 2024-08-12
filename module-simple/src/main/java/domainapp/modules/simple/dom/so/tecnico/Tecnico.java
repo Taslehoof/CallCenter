@@ -1,7 +1,6 @@
 package domainapp.modules.simple.dom.so.tecnico;
 
 import domainapp.modules.simple.SimpleModule;
-import domainapp.modules.simple.dom.so.ayudante.Ayudante;
 import domainapp.modules.simple.dom.so.cuadrilla.Cuadrilla;
 
 import domainapp.modules.simple.dom.so.cuadrilla.CuadrillaRepo;
@@ -13,22 +12,16 @@ import lombok.ToString;
 
 import org.apache.causeway.applib.annotation.*;
 import org.apache.causeway.applib.util.ObjectContracts;
-import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import javax.inject.Inject;
-import javax.inject.Named;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.NotPersistent;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Unique;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
 
 import java.util.List;
 

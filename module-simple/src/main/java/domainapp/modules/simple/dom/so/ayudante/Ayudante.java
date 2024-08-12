@@ -14,20 +14,14 @@ import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Property;
 import org.apache.causeway.applib.annotation.Title;
 import org.apache.causeway.applib.util.ObjectContracts;
-import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
 
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Unique;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import java.util.List;
 
 @NamedQueries({

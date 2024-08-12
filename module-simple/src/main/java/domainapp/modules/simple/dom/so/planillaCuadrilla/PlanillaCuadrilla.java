@@ -24,12 +24,8 @@ import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Unique;
-import javax.persistence.Entity;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import java.math.BigInteger;
 
 @Unique(name = "PlanillaCuadrilla_idPlanillaCuadrilla_UNQ", members = {"idPlanillaCuadrilla"})

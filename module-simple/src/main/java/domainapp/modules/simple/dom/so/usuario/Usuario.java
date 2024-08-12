@@ -10,24 +10,17 @@ import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
 
+import lombok.val;
+
 import org.apache.causeway.applib.services.factory.FactoryService;
 import org.apache.causeway.applib.services.repository.RepositoryService;
 import org.apache.causeway.applib.util.ObjectContracts;
 import org.apache.causeway.applib.annotation.*;
 import javax.inject.Inject;
-import lombok.val;
-
-import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
-import javax.inject.Named;
 import javax.jdo.annotations.*;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import java.util.ArrayList;
 import java.util.List;
 

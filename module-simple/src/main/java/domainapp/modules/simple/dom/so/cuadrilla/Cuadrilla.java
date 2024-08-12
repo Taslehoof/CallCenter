@@ -8,30 +8,20 @@ import domainapp.modules.simple.dom.so.tecnico.Tecnico;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
-import lombok.val;
 
 import org.apache.causeway.applib.annotation.BookmarkPolicy;
 import org.apache.causeway.applib.annotation.DomainObject;
 import org.apache.causeway.applib.annotation.DomainObjectLayout;
 import org.apache.causeway.applib.annotation.Editing;
 import org.apache.causeway.applib.annotation.Property;
-import org.apache.causeway.applib.annotation.Publishing;
 import org.apache.causeway.applib.util.ObjectContracts;
-import org.apache.causeway.persistence.jpa.applib.integration.CausewayEntityListener;
-
-import javax.inject.Named;
 import javax.jdo.annotations.Column;
 import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.Unique;
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.Table;
-import javax.persistence.UniqueConstraint;
-
 import java.util.List;
 
 @NamedQueries({
